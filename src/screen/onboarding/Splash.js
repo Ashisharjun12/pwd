@@ -8,7 +8,7 @@ const Splash = () => {
     useEffect(()=>{
         setTimeout(()=>{
             navigation.navigate('SelectUser')
-        },3000)
+        },1000)
     },[])
   return (
     <View>

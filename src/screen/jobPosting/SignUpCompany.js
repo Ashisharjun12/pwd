@@ -1,4 +1,4 @@
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Alert} from 'react-native';
 import React, {useState} from 'react';
 import {
   responsiveFontSize,
@@ -50,26 +50,9 @@ const SignUpCompany = () => {
     let validAddress = true;
     let validPassword = true;
 
-    //name
+   
 
-    if (name == '') {
-      (validName = false), setBadName('Please Enter Your Name');
-    } else if (name != '' && name.length < 3) {
-      validName = false;
-      setBadName('Please Enter Valid Name');
-    } else if (
-      name != '' &&
-      name.length >= 3 &&
-      !name.toString().match(nameRegex)
-    ) {
-      validName = false;
-      setBadName('Please Enter Valid Name');
-    } else if (name != '' && name.length >= 3) {
-      validName = true;
-      setBadName('');
-    }
-
-    //regex true
+    //name validate
 
     if (name == '') {
       (validName = false), setBadName('Please Enter Your Name');
@@ -155,6 +138,8 @@ const SignUpCompany = () => {
       validPassword=true;
       setBadPassword('')
     }
+
+    return validEmail && validName && validContact && validCompanyName && validPassword && validAddress
   };
 
   return (
@@ -235,7 +220,7 @@ const SignUpCompany = () => {
         <CustomTextInput
           value={companyName}
           onChnageText={txt => {
-            companyName(txt);
+            setCompanyName(txt);
           }}
           title={'Company Name'}
           placeholder={'Ex-microsoft'}
@@ -283,13 +268,14 @@ const SignUpCompany = () => {
               fontSize: responsiveFontSize(1.9),
               marginLeft: responsiveWidth(7),
             }}>
-            {setBadPassword}
+            {badPaassword}
           </Text>
         )}
 
         <SolidBtn
           onClick={() => {
             if (validate()) {
+              Alert.alert('ready')
             }
           }}
           title={'Sign Up'}

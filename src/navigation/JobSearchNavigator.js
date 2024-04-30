@@ -1,12 +1,28 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {View, Text} from 'react-native';
+import React from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import LoginUser from '../screen/jobSearch/LoginUser';
+import SignUpUser from '../screen/jobSearch/SignUpUser';
 
-const JobSearchNavigator = () => {
+
+
+const Stack = createNativeStackNavigator();
+const JobSearchNavigatior = () => {
   return (
-    <View>
-      <Text>JobSearchNavigator</Text>
-    </View>
-  )
-}
+    <Stack.Navigator>
+      <Stack.Screen
+        name="LoginUser"
+        component={LoginUser}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SignUpUser"
+        component={SignUpUser}
+        options={{headerShown: false}}
+      />
+     
+    </Stack.Navigator>
+  );
+};
 
-export default JobSearchNavigator
+export default JobSearchNavigatior;

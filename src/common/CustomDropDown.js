@@ -1,12 +1,13 @@
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {
   responsiveFontSize,
   responsiveHeight,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const CustomTextInput = ({title, placeholder, value, onChangeText,keyboardType}) => {
+const CustomDropDown = ({title, placeholder,onClick}) => {
   return (
     <View
       style={{
@@ -21,6 +22,9 @@ const CustomTextInput = ({title, placeholder, value, onChangeText,keyboardType})
         justifyContent: 'center',
         paddingLeft: responsiveWidth(5),
         paddingRight: responsiveWidth(5),
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
       }}>
       <Text
         style={{
@@ -36,15 +40,24 @@ const CustomTextInput = ({title, placeholder, value, onChangeText,keyboardType})
         }}>
         {title}
       </Text>
-      <TextInput
-        value={value}
-        onChangeText={onChangeText}
-        style={{fontSize: responsiveFontSize(2)}}
-        placeholder={placeholder}
-        keyboardType={keyboardType?keyboardType:'default'}
-      />
+      <TouchableOpacity onPress={()=>onClick()} style={{flexDirection:'row',justifyContent:'space-between',width:'100%'}}>
+      <Text
+        style={{
+          color: 'black',
+          fontSize: responsiveFontSize(2),
+          paddingLeft: responsiveWidth(2),
+        }}>
+        {placeholder}
+      </Text>
+      
+      <AntDesign  name="downcircleo" color={'grey'} size={30} />
+      
+      
+
+      </TouchableOpacity>
+      
     </View>
   );
 };
 
-export default CustomTextInput;
+export default CustomDropDown;

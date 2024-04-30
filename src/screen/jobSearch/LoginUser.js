@@ -13,7 +13,7 @@ import firestore from '@react-native-firebase/firestore'
 import Loader from '../../common/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const LoginCompany = () => {
+const LoginUser = () => {
     const  navigation = useNavigation()
 //email
     const [email, setEmail] = useState('');
@@ -106,7 +106,7 @@ const LoginCompany = () => {
     await AsyncStorage.setItem('EMAIL',email)
     await AsyncStorage.setItem('USER_ID',id)
     await AsyncStorage.setItem('USER_TYPE','company')
-    navigation.navigate('DashboardCompany')
+    navigation.navigate('DashboardUser')
 
 
   }
@@ -192,11 +192,11 @@ const LoginCompany = () => {
 
             }
         }} title={'Sign In'}/>
-        <BorderBtn onClick={()=>navigation.navigate('SignUpCompany')} title={'Create Account'}/>
+        <BorderBtn onClick={()=>navigation.navigate('SignUpUser')} title={'Create Account'}/>
       </View>
       <Loader visible={loading}/>
     </View>
   );
 };
 
-export default LoginCompany;
+export default LoginUser;

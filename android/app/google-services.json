@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "933957992158",
+    "project_id": "pwds-279c1",
+    "storage_bucket": "pwds-279c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933957992158:android:bc8f7c4f94995b27020c4f",
+        "android_client_info": {
+          "package_name": "com.pwd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALymAhtOoH2DbJ9Rt-W6Q9GGRfvOQppc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,7 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import Loader from '../../common/Loader';
 import firestore from '@react-native-firebase/firestore'
 
-const SignUpCompany = () => {
+const SignUpUser = () => {
   const navigation = useNavigation();
 
   //name
@@ -149,7 +149,7 @@ const SignUpCompany = () => {
 
   const registerUser =()=>{
     setLoading(true)
-    firestore().collection('JobPoster').add({
+    firestore().collection('GetJobs').add({
       name,
       email,
       contact,
@@ -336,4 +336,4 @@ const SignUpCompany = () => {
   );
 };
 
-export default SignUpCompany;
+export default SignUpUser;

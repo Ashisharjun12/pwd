@@ -76,7 +76,7 @@ const LoginUser = () => {
   //method handel login
   const handleLogin = () => {
     setLoading(true)
-    firestore().collection('JobPoster').where('email','==',email).get().then(data=>{
+    firestore().collection('GetJobs').where('email','==',email).get().then(data=>{
         setLoading(false)
         console.log(data.docs)
         if(data.docs.length>0){

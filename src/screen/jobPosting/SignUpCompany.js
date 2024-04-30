@@ -141,6 +141,20 @@ const SignUpCompany = () => {
       validAddress=true;
       setBadAddress('')
     }
+
+
+    //password
+
+    if(password==''){
+      validPassword=false;
+      setBadPassword("Please Enter the Password")
+    }else if(password!='' && password.length<6){
+      validPassword=false;
+      setBadPassword('Please Enter min 6 Character')
+    }else if(password!='' && password.length>6){
+      validPassword=true;
+      setBadPassword('')
+    }
   };
 
   return (
@@ -262,6 +276,16 @@ const SignUpCompany = () => {
           title={'Password'}
           placeholder={'Password'}
         />
+         {password != '' && (
+          <Text
+            style={{
+              color: 'red',
+              fontSize: responsiveFontSize(1.9),
+              marginLeft: responsiveWidth(7),
+            }}>
+            {setBadPassword}
+          </Text>
+        )}
 
         <SolidBtn
           onClick={() => {

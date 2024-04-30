@@ -4,7 +4,7 @@ import { responsiveHeight, responsiveWidth ,responsiveFontSize} from 'react-nati
 
 const SolidBtn = ({title ,onClick}) => {
   return (
-   <TouchableOpacity style={{
+   <TouchableOpacity onPress={()=>onClick()} style={{
     width: responsiveWidth(90),
     backgroundColor:'#5169F6',
     height: responsiveHeight(7),

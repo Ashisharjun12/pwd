@@ -1,5 +1,5 @@
 import {View, Text, ScrollView} from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   responsiveFontSize,
   responsiveHeight,
@@ -13,40 +13,135 @@ import {useNavigation} from '@react-navigation/native';
 const SignUpCompany = () => {
   const navigation = useNavigation();
 
-//name
-const [name ,setName] =useState('')
-const [badName ,setBadName]= useState('')
+  //name
+  const [name, setName] = useState('');
+  const [badName, setBadName] = useState('');
 
-//email
-const [email ,setEmail] =useState('')
-const [badEmail ,setBadEmail]= useState('')
+  //email
+  const [email, setEmail] = useState('');
+  const [badEmail, setBadEmail] = useState('');
 
-//contact
-const [contact ,setcontact] =useState('')
-const [badContact ,setBadContact]= useState('')
+  //contact
+  const [contact, setcontact] = useState('');
+  const [badContact, setBadContact] = useState('');
 
-//companyName
-const [companyName ,setCompanyName] =useState('')
-const [badCompanyName ,setBadCompanyName]= useState('')
+  //companyName
+  const [companyName, setCompanyName] = useState('');
+  const [badCompanyName, setBadCompanyName] = useState('');
+
+  //Address
+  const [Address, setAddress] = useState('');
+  const [badAddress, setBadAddress] = useState('');
+
+  //Paassword
+  const [password, setPassword] = useState('');
+  const [badPaassword, setBadPassword] = useState('');
+
+  //validation
+  const validate = () => {
+    let nameRegex = /^[A-Za-z]+(?:[ -][A-Za-z]+)*$/;
+    let emailRegex = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/;
+    let contactRegex = /^\+\d{2,}-\d{6,}$/
+
+    let validEmail = true;
+    let validName = true;
+    let validContact = true;
+    let validCompanyName = true;
+    let validAddress = true;
+    let validPassword = true;
+
+    //name
+
+    if (name == '') {
+      (validName = false), setBadName('Please Enter Your Name');
+    } else if (name != '' && name.length < 3) {
+      validName = false;
+      setBadName('Please Enter Valid Name');
+    } else if (
+      name != '' &&
+      name.length >= 3 &&
+      !name.toString().match(nameRegex)
+    ) {
+      validName = false;
+      setBadName('Please Enter Valid Name');
+    } else if (name != '' && name.length >= 3) {
+      validName = true;
+      setBadName('');
+    }
+
+    //regex true
+
+    if (name == '') {
+      (validName = false), setBadName('Please Enter Your Name');
+    } else if (name != '' && name.length < 3) {
+      validName = false;
+      setBadName('Please Enter Valid Name');
+    } else if (
+      name != '' &&
+      name.length >= 3 &&
+      name.toString().match(nameRegex)
+    ) {
+      validName = false;
+      setBadName('Please Enter Valid Name');
+    } else if (
+      name != '' &&
+      name.length >= 3 &&
+      name.toString().match(nameRegex)
+    ) {
+      validName = true;
+      setBadName('');
+    }
+
+    //email validate
+
+    if (email == '') {
+      validEmail = false;
+      setBadEmail('Please Enter Email');
+    } else if (email != '' && !email.toString().match(emailRegex)) {
+      validEmail = false;
+      setBadEmail('Please Enter Valid Email');
+    } else if (email != '' && email.toString().match(emailRegex)) {
+      validEmail = true;
+      setBadEmail('');
+    }
 
 
+    //contact validate
+    if(contact==''){
+      validContact=false;
+      setBadContact('Please Enter Valid Number')
+    }else if(contact!='' && contact.length<10){
+      validContact=false;
+      setBadContact('Please Enter Valid Contact')
+    }else if(contact!='' && !contact.length>=10 && contact.match(contactRegex)){
+      validContact=false;
+      setBadContact('Please Enter Valid Contact')
+    }else if(contact!='' && contact.length>=10 && contact.match(contactRegex)){
+      validContact=true;
+      setBadContact('')
 
-//Address
-const [Address ,setAddress] =useState('')
-const [badAddress ,setBadAddress]= useState('')
+    }
 
 
-//Paassword
-const [password ,setPassword] =useState('')
-const [badPaassword ,setBadPassword]= useState('')
+    //companyname
+    if(companyName==''){
+      validCompanyName=false;
+      setBadCompanyName('Please Enter this Field')
+    }else if(companyName!=''){
+      validCompanyName=true;
+      setBadCompanyName('')
+    }
 
 
-//validation
-const validate = ()=>{
-  let validEmail = true;
-  
-}
-
+    //address
+    if(Address==''){
+      validAddress=false;
+      setBadCompanyName('Please Enter this Field')
+    }else if(Address!=''){
+      validAddress=true;
+      setBadAddress('')
+    }
+  };
 
   return (
     <ScrollView>
@@ -66,18 +161,115 @@ const validate = ()=>{
         </Text>
       </View>
       <View>
-        <CustomTextInput value={name} onChangeText={txt =>{setName(txt)}} title={'Name'} placeholder={'Ashish Raj'} />
         <CustomTextInput
-        value={email} onChangeText={txt =>{setEmail(txt)}}
+          value={name}
+          onChnageText={txt => {
+            setName(txt);
+          }}
+          title={'Name'}
+          placeholder={'Ashish Raj'}
+        />
+        {badName != '' && (
+          <Text
+            style={{
+              color: 'red',
+              fontSize: responsiveFontSize(1.9),
+              marginLeft: responsiveWidth(7),
+            }}>
+            {badName}
+          </Text>
+        )}
+
+        <CustomTextInput
+          value={email}
+          onChnageText={txt => {
+            setEmail(txt);
+          }}
           title={'Email'}
           placeholder={'ashishrahul748@gmail.com'}
         />
-        <CustomTextInput value={contact} onChangeText={txt =>{setcontact(txt)}} title={'Contact'} placeholder={'+91-000000989'} />
-        <CustomTextInput value={companyName} onChangeText={txt =>{setCompanyName(txt)}} title={'Company Name'} placeholder={'Ex-microsoft'} />
-        <CustomTextInput value={Address} onChangeText={txt =>{setAddress(txt)}} title={'Address'} placeholder={'Company Address'} />
-        <CustomTextInput value={password} onChangeText={txt =>{setPassword(txt)}} title={'Password'} placeholder={'Password'} />
+        {badEmail != '' && (
+          <Text
+            style={{
+              color: 'red',
+              fontSize: responsiveFontSize(1.9),
+              marginLeft: responsiveWidth(7),
+            }}>
+            {badEmail}
+          </Text>
+        )}
 
-        <SolidBtn onClick={() => {}} title={'Sign Up'} />
+        <CustomTextInput
+          value={contact}
+          onChnageText={txt => {
+            setcontact(txt);
+          }}
+          title={'Contact'}
+          placeholder={'+91-000000989'}
+        />
+          {badContact != '' && (
+          <Text
+            style={{
+              color: 'red',
+              fontSize: responsiveFontSize(1.9),
+              marginLeft: responsiveWidth(7),
+            }}>
+            {badContact}
+          </Text>
+        )}
+
+        <CustomTextInput
+          value={companyName}
+          onChnageText={txt => {
+            companyName(txt);
+          }}
+          title={'Company Name'}
+          placeholder={'Ex-microsoft'}
+        />
+         {companyName != '' && (
+          <Text
+            style={{
+              color: 'red',
+              fontSize: responsiveFontSize(1.9),
+              marginLeft: responsiveWidth(7),
+            }}>
+            {badCompanyName}
+          </Text>
+        )}
+        <CustomTextInput
+          value={Address}
+          onChnageText={txt => {
+            setAddress(txt);
+          }}
+          title={'Address'}
+          placeholder={'Company Address'}
+        />
+         {Address != '' && (
+          <Text
+            style={{
+              color: 'red',
+              fontSize: responsiveFontSize(1.9),
+              marginLeft: responsiveWidth(7),
+            }}>
+            {badAddress}
+          </Text>
+        )}
+        <CustomTextInput
+          value={password}
+          onChnageText={txt => {
+            setPassword(txt);
+          }}
+          title={'Password'}
+          placeholder={'Password'}
+        />
+
+        <SolidBtn
+          onClick={() => {
+            if (validate()) {
+            }
+          }}
+          title={'Sign Up'}
+        />
         <BorderBtn onClick={() => navigation.goBack()} title={'Login'} />
       </View>
     </ScrollView>

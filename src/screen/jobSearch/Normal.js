@@ -41,7 +41,7 @@ const Normal = () => {
           ),
         }}/>
       <Tab.Screen
-        name="UserAccount"
+        name="Account"
         component={UserAccount}
         options={{
             headerShown: false,

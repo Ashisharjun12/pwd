@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text,TouchableOpacity} from 'react-native';
 import React from 'react';
 import {
   responsiveFontSize,
@@ -6,6 +6,7 @@ import {
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
 import {useRoute} from '@react-navigation/native';
+import Entypo from 'react-native-vector-icons/Entypo';
 import GoBack from '../../common/GoBack';
 
 const JobDetails = () => {
@@ -102,6 +103,44 @@ const JobDetails = () => {
           {'PostedBy : ' + routeData.PostedName}
         </Text>
       </View>
+      {/* bottom */}
+
+      <TouchableOpacity 
+        style={{
+          width: responsiveWidth(30),
+          height: responsiveHeight(7),
+          position: 'absolute',
+          marginLeft: responsiveWidth(7),
+          top: '179%',
+          borderRadius: 7,
+          borderWidth: 0.8,
+          justifyContent:'center',
+          alignItems:'center'
+        }}>
+           <Entypo name="bookmarks" color={'black'} size={29} />
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+         style={{
+          width: responsiveWidth(40),
+          height: responsiveHeight(7),
+          backgroundColor:'#5169F6',
+          position: 'absolute',
+          marginLeft: responsiveWidth(51),
+          top: '179%',
+          borderRadius: 7,
+          borderWidth: 0.8,
+          justifyContent:'center',
+          alignItems:'center'
+        }}
+        >
+            <Text style={{fontSize:responsiveFontSize(2.4),fontWeight:'500',color:'white'}}>Apply Now</Text>
+        </TouchableOpacity>
+
+
+    
+
+     
     </View>
   );
 };

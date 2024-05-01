@@ -9,6 +9,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import Card from './Card';
 import { useNavigation } from '@react-navigation/native';
 
+
 const Home = () => {
     const navigation = useNavigation()
   return (
@@ -93,6 +94,8 @@ const Home = () => {
           style={{marginLeft: responsiveWidth(4), backgroundColor: '#43C5AE'}}
         />
       </View>
+
+     
     
     </ScrollView>
   );

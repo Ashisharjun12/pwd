@@ -23,7 +23,7 @@ const Job = () => {
   const searchjob = txt => {
     firestore()
       .collection('jobs')
-      .where('jobTitle', '==', txt)
+      .where('category', '==', txt)
       .get()
       .then(snapshot => {
         console.log(snapshot.docs);

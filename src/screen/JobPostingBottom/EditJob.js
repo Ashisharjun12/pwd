@@ -8,7 +8,7 @@ import {
 const EditJob = () => {
   return (
     <View>
-      <Text
+      <Text 
         style={{
           color: 'black',
           textAlign: 'center',

@@ -15,8 +15,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginUser = () => {
     const  navigation = useNavigation()
-    //modal
-    [visible,setVisible]=useState(false)
+    
+ 
     
 //email
     const [email, setEmail] = useState('');
@@ -199,12 +199,8 @@ const LoginUser = () => {
       </View>
       <Loader visible={loading}/>
 
-      {/* select interface for normal and blindAmputee */}
-      <Modal>
-
-
-      </Modal>
     </View>
+    
   );
 };
 

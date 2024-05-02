@@ -9,12 +9,12 @@ import SelectUser from '../screen/onboarding/SelectUser';
 import DashboardCompany from '../screen/jobPosting/DashboardCompany';
 import EditJob from '../screen/JobPostingBottom/EditJob';
 import DashboardUser from '../screen/jobSearch/DashboardUser';
-import Blind from '../screen/jobSearch/Blind';
-import Amputee from '../screen/jobSearch/Amputee';
+
 import Normal from '../screen/jobSearch/Normal';
 import Card from '../screen/NormalBottom/Card';
 import Job from '../screen/NormalBottom/Job';
 import JobDetails from '../screen/NormalBottom/JobDetails';
+import BlindAmputee from '../screen/jobSearch/BlindAmputee';
 
 const Stack = createNativeStackNavigator();
 const MainNavigator = () => {
@@ -48,19 +48,15 @@ const MainNavigator = () => {
       />
 
       {/* blind and amputee */}
-      <Stack.Screen
-        name="Blind"
-        component={Blind}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Amputee"
-        component={Amputee}
-        options={{headerShown: false}}
-      />
+    
       <Stack.Screen
         name="Normal"
         component={Normal}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="BlindAmputee"
+        component={BlindAmputee}
         options={{headerShown: false}}
       />
       {/* for normal */}

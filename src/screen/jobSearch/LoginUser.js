@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, Modal} from 'react-native';
 import React, { useState } from 'react';
 import {
   responsiveFontSize,
@@ -15,6 +15,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginUser = () => {
     const  navigation = useNavigation()
+    //modal
+    [visible,setVisible]=useState(false)
+    
 //email
     const [email, setEmail] = useState('');
     const [badEmail, setBadEmail] = useState('');
@@ -195,6 +198,12 @@ const LoginUser = () => {
         <BorderBtn onClick={()=>navigation.navigate('SignUpUser')} title={'Create Account'}/>
       </View>
       <Loader visible={loading}/>
+
+      {/* select interface for normal and blindAmputee */}
+      <Modal>
+
+
+      </Modal>
     </View>
   );
 };

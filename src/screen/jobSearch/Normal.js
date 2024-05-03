@@ -8,6 +8,7 @@ import Home from '../NormalBottom/Home';
 import Apply from '../NormalBottom/Apply';
 import Chat from '../NormalBottom/Chat';
 import UserAccount from '../NormalBottom/UserAccount';
+import Account from '../JobPostingBottom/Account';
 
 const Tab = createBottomTabNavigator();
 const Normal = () => {
@@ -42,7 +43,7 @@ const Normal = () => {
         }}/>
       <Tab.Screen
         name="Account"
-        component={UserAccount}
+        component={Account}
         options={{
             headerShown: false,
             tabBarIcon: ({color, size}) => (

@@ -9,8 +9,8 @@ const Splash = () => {
     useEffect(()=>{
         setTimeout(()=>{
             // getData()
-            // navigation.navigate('DashboardUser')
-            navigation.navigate('SelectUser')
+            navigation.navigate('DashboardUser')
+            // navigation.navigate('SelectUser')
             // navigation.navigate('BlindAmputee')
            
         },1000)
@@ -21,15 +21,18 @@ const Splash = () => {
       if(type!=null){
         if(type=='company'){
           navigation.navigate('DashboardCompany')
+
         }
        
       }else{
         navigation.navigate('SelectUser')
+
       }
       
     }
   return (
     <View>
+      
       <Text>Splash screen</Text>
     </View>
   )

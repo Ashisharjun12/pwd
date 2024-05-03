@@ -191,9 +191,9 @@ const BlindAmputee = () => {
                   fontWeight: '500',
                 }}>
                 Color Contrast
-              </Text>
+              </Text>j fdioyzdg[9rg7-8z0t]
             </TouchableOpacity>
-          </View>
+          </View> let a
         </View>
       </Modal>
     </ScrollView>

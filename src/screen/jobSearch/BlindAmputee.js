@@ -27,66 +27,45 @@ const BlindAmputee = () => {
 
   return (
     <ScrollView style={{marginBottom: responsiveHeight(1)}}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginTop: responsiveHeight(9),
-          marginBottom: responsiveHeight(2),
-          backgroundColor: 'white',
-          borderRadius: 9,
-          width: responsiveWidth(90),
-          marginLeft: responsiveWidth(5.5),
-          borderWidth: 0.5,
-        }}>
-        <TextInput
-          style={{
-            flex: 1,
-            marginLeft: responsiveWidth(4),
-            fontSize: responsiveFontSize(2.3),
-            color: 'black',
-          }}
-          placeholderTextColor={'black'}
-          placeholder="Search Jobs..."
-        />
-
-        <View style={{marginRight: responsiveWidth(7)}}>
-          <Feather name="search" color="#535353" size={30} />
-        </View>
-      </View>
+    
 
       {/* Adding Cards */}
 
       <View
-        style={{flexDirection: 'row', marginTop: responsiveHeight(6), gap: 24}}>
-        <Card
-          onClick={() => {}}
-          title={'Exams'}
-          imgsrc={require('../../Image/exam.png')}
-          style={{marginLeft: responsiveWidth(4)}}
+        style={{flexDirection: 'row', marginTop: responsiveHeight(6), gap: 8,marginLeft:responsiveWidth(3)}}>
+        <Card 
+        style={{width:responsiveWidth(42)}}
+          onClick={() => {navigation.navigate('Vocational')}}
+          title={'Vocational\n Traning'}
+          
+          imgsrc={require('../../Image/vocal.png')}
+          styleCard={{marginLeft: responsiveWidth(2),height:responsiveHeight(40)}}
         />
         <Card
           onClick={() => {}}
           title={'Workshop'}
           imgsrc={require('../../Image/web.png')}
-          style={{marginLeft: responsiveWidth(4), backgroundColor: '#43C5AE'}}
+          style={{width:responsiveWidth(43), backgroundColor: '#43C5AE'}}
+          styleCard={{marginLeft: responsiveWidth(2),height:responsiveHeight(40)}}
         />
       </View>
       <View
-        style={{flexDirection: 'row', marginTop: responsiveHeight(5), gap: 24}}>
+        style={{flexDirection: 'row', marginTop: responsiveHeight(3), gap: 8,marginLeft:responsiveWidth(3)}}>
         <Card
           onClick={() => {
             navigation.navigate('Job');
           }}
           title={'Jobs'}
           imgsrc={require('../../Image/jobs.png')}
-          style={{marginLeft: responsiveWidth(4), backgroundColor: '#F45E5E'}}
+          style={{width: responsiveWidth(43), backgroundColor: '#F45E5E'}}
+          styleCard={{marginLeft: responsiveWidth(2),height:responsiveHeight(40)}}
         />
         <Card
           onClick={() => {}}
           title={'News'}
           imgsrc={require('../../Image/news.png')}
-          style={{marginLeft: responsiveWidth(4), backgroundColor: '#60D68E'}}
+          style={{width: responsiveWidth(43), backgroundColor: '#60D68E'}}
+          styleCard={{marginLeft: responsiveWidth(2),height:responsiveHeight(40)}}
         />
       </View>
 
@@ -97,8 +76,8 @@ const BlindAmputee = () => {
         <Image
           style={{
             marginLeft: responsiveWidth(5),
-            marginTop: responsiveHeight(11),
-          }}
+            marginTop: responsiveHeight(3),
+          }} 
           source={require('../../Image/access.png')}
         />
       </TouchableOpacity>

@@ -57,9 +57,9 @@ const Home = () => {
       <View
         style={{flexDirection: 'row', marginTop: responsiveHeight(6), gap: 20}}>
         <Card
-          onClick={() => {navigation.navigate('Vocational')}}
-          title={'Vocational\n Traning'}
-          imgsrc={require('../../Image/vocal.png')}
+          onClick={() => {}}
+          title={'Exams'}
+          imgsrc={require('../../Image/exam.png')}
           style={{marginLeft: responsiveWidth(4)}}
         />
         <Card

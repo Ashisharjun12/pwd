@@ -4,9 +4,6 @@ import React from 'react'
 
 const Apply = () => {
 
-
-  
-
  
   return (
     <View>

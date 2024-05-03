@@ -1,5 +1,12 @@
-import {View, Text, TextInput, ScrollView,TouchableOpacity,Image} from 'react-native';
-import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+import React, {useState} from 'react';
 import {
   responsiveHeight,
   responsiveWidth,
@@ -7,17 +14,16 @@ import {
 } from 'react-native-responsive-dimensions';
 import Feather from 'react-native-vector-icons/Feather';
 import Card from './Card';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Modal from 'react-native-modal';
 
-
 const Home = () => {
-    const navigation = useNavigation()
-    const [isVisible, setIsVisible] = useState(false);
+  const navigation = useNavigation();
+  const [isVisible, setIsVisible] = useState(false);
   return (
-    <ScrollView style={{marginBottom:responsiveHeight(1)}}>
+    <ScrollView style={{marginBottom: responsiveHeight(1)}}>
       <View
         style={{
           flexDirection: 'row',
@@ -48,14 +54,12 @@ const Home = () => {
 
       {/* Adding Cards */}
 
-      
-
       <View
         style={{flexDirection: 'row', marginTop: responsiveHeight(6), gap: 20}}>
         <Card
-          onClick={() => {}}
-          title={'Exams'}
-          imgsrc={require('../../Image/exam.png')}
+          onClick={() => {navigation.navigate('Vocational')}}
+          title={'Vocational\n Traning'}
+          imgsrc={require('../../Image/vocal.png')}
           style={{marginLeft: responsiveWidth(4)}}
         />
         <Card
@@ -68,10 +72,12 @@ const Home = () => {
       <View
         style={{flexDirection: 'row', marginTop: responsiveHeight(6), gap: 20}}>
         <Card
-          onClick={() => {navigation.navigate('Job')}}
+          onClick={() => {
+            navigation.navigate('Job');
+          }}
           title={'Jobs'}
           imgsrc={require('../../Image/jobs.png')}
-          style={{marginLeft: responsiveWidth(4),backgroundColor: '#F45E5E'}}
+          style={{marginLeft: responsiveWidth(4), backgroundColor: '#F45E5E'}}
         />
         <Card
           onClick={() => {}}
@@ -80,7 +86,6 @@ const Home = () => {
           style={{marginLeft: responsiveWidth(4), backgroundColor: '#60D68E'}}
         />
       </View>
-
 
       {/* asscess */}
       <TouchableOpacity
@@ -95,9 +100,9 @@ const Home = () => {
           source={require('../../Image/access.png')}
         />
       </TouchableOpacity>
-     
-     {/* modal */}
-     <Modal
+
+      {/* modal */}
+      <Modal
         isVisible={isVisible}
         animationIn={'slideInUp'}
         onBackdropPress={() => {
@@ -124,7 +129,8 @@ const Home = () => {
           </Text>
 
           <View>
-            <TouchableOpacity onPress={()=>{}}
+            <TouchableOpacity
+              onPress={() => {}}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -152,7 +158,8 @@ const Home = () => {
                 Increse FontSize
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>{}}
+            <TouchableOpacity
+              onPress={() => {}}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -180,7 +187,8 @@ const Home = () => {
                 Decrease FontSize
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>{}}
+            <TouchableOpacity
+              onPress={() => {}}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -193,11 +201,7 @@ const Home = () => {
                 borderRadius: 4,
                 borderWidth: 0.6,
               }}>
-              <Ionicons
-                name="color-filter-outline"
-                color={'black'}
-                size={34}
-              />
+              <Ionicons name="color-filter-outline" color={'black'} size={34} />
 
               <Text
                 style={{
@@ -211,7 +215,6 @@ const Home = () => {
           </View>
         </View>
       </Modal>
-    
     </ScrollView>
   );
 };

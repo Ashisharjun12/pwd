@@ -91,7 +91,7 @@ const BlindAmputee = () => {
       </View>
 
       <TouchableOpacity
-        onPress={() => {
+        onPress={() => { 
           setIsVisible(true);
         }}>
         <Image

@@ -6,7 +6,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 const Splash = () => {
   const navigation = useNavigation()
 
-<<<<<<< HEAD
     useEffect(()=>{
         setTimeout(()=>{
             // getData()
@@ -16,14 +15,14 @@ const Splash = () => {
            
         },1000)
     },[])
-=======
+
   useEffect(() => {
     setTimeout(() => {
       // getData()
       // navigation.navigate('DashboardUser')
       navigation.navigate('SelectUser')
       // navigation.navigate('BlindAmputee')
->>>>>>> b441f7a08da2ac2a3ddfeffc429ef7dcfa0c0b27
+
 
     }, 1000)
   }, [])

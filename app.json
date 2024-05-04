@@ -1,4 +1,13 @@
 {
   "name": "pwd",
-  "displayName": "pwd"
+  "displayName": "pwd",
+  "plugins": [
+    [
+      "@react-native-voice/voice",
+      {
+        "microphonePermission": "Allow Udyam Saarthi to access the microphone",
+        "speechRecognitionPermission": "Allow Udyam Saarthi to securely recognize user speech"
+      }
+    ]
+  ]
 }

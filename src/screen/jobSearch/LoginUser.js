@@ -157,8 +157,18 @@ const LoginUser = () => {
     await AsyncStorage.setItem('EMAIL', email);
     await AsyncStorage.setItem('USER_ID', id);
     await AsyncStorage.setItem('USER_TYPE', 'company');
-    navigation.navigate('DashboardUser');
+   
   };
+
+
+  //handle switch method
+
+  const handelSwitch = ()=>{
+    setShowModal(true)
+
+
+    
+  }
 
   return (
     <View>
@@ -239,6 +249,7 @@ const LoginUser = () => {
           onClick={() => {
             if (validate()) {
               handleLogin();
+              handelSwitch()
             }
           }}
           title={'Sign In'}

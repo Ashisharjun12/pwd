@@ -52,10 +52,10 @@ const LoginUser = () => {
   const onSpeechResults = e => {
     setResults(e.value);
     if (e.value.join("").replace(/\s/g, "").toLowerCase() === ("signin")) {
-      navigation.navigate('DashboardUser');
+      handelSwitch();
     }
     else if (e.value.join("").replace(/\s/g, "").toLowerCase() === ("createaccount")) {
-      navigation.navigate();
+      navigation.navigate('SignUpUser');
     }
     if (e.value.join("").replace(/\s/g, "").toLowerCase().includes("emailis")) {
       const index = e.value.join("").replace(/\s/g, "").indexOf("com");

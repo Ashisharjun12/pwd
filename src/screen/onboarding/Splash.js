@@ -13,6 +13,7 @@ const Splash = () => {
       navigation.navigate('SelectUser')
       // navigation.navigate('BlindAmputee')
 
+<<<<<<< HEAD
     }, 1000)
   }, [])
 
@@ -21,6 +22,19 @@ const Splash = () => {
     if (type != null) {
       if (type == 'company') {
         navigation.navigate('DashboardCompany')
+=======
+    const getData= async()=>{
+      let type = await AsyncStorage.getItem('USER_TYPE')
+      if(type!=null){
+        if(type=='company'){
+          navigation.navigate('DashboardCompany')
+
+        }
+       
+      }else{
+        navigation.navigate('SelectUser')
+
+>>>>>>> 04c72d230aaa64898aa5aa10e54697e62a27da6d
       }
 
     } else {
@@ -30,6 +44,7 @@ const Splash = () => {
   }
   return (
     <View>
+      
       <Text>Splash screen</Text>
     </View>
   )

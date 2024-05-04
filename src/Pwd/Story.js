@@ -1,15 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-
-const Apply = () => {
-
- 
+const Story = () => {
   return (
     <View>
-      <Text style={{color:'black'}}>apply</Text>
+      <Text>Story</Text>
     </View>
   )
 }
 
-export default Apply
+export default Story

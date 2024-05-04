@@ -1,15 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-
-const Apply = () => {
-
- 
+const NonTech = () => {
   return (
     <View>
-      <Text style={{color:'black'}}>apply</Text>
+      <Text>NonTech</Text>
     </View>
   )
 }
 
-export default Apply
+export default NonTech

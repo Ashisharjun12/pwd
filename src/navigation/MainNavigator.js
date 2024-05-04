@@ -15,6 +15,11 @@ import Card from '../screen/NormalBottom/Card';
 import Job from '../screen/NormalBottom/Job';
 import JobDetails from '../screen/NormalBottom/JobDetails';
 import BlindAmputee from '../screen/jobSearch/BlindAmputee';
+import Vocational from '../Pwd/Vocational';
+import Technical from '../Pwd/Technical';
+import NonTech from '../Pwd/NonTech';
+import Story from '../Pwd/Story';
+import Linklist from '../Pwd/Topic/Linklist';
 
 const Stack = createNativeStackNavigator();
 const MainNavigator = () => {
@@ -59,6 +64,37 @@ const MainNavigator = () => {
         component={BlindAmputee}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="Vocational"
+        component={Vocational}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Technical"
+        component={Technical}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="NonTech"
+        component={NonTech}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Story"
+        component={Story}
+        options={{headerShown: false}}
+      />
+
+      {/* Topic */}
+      <Stack.Screen
+        name="Linklist"
+        component={Linklist}
+        options={{headerShown: false}}
+      />
+
+
+
+
       {/* for normal */}
       <Stack.Screen
         name="Card"

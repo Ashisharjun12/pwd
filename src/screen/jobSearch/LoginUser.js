@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { View, Text, TouchableOpacity, Modal } from 'react-native';
-import React, { useState } from 'react';
-=======
 import { View, Text, Modal } from 'react-native';
 import React, { useEffect, useState } from 'react';
->>>>>>> b441f7a08da2ac2a3ddfeffc429ef7dcfa0c0b27
 import {
   responsiveFontSize,
   responsiveHeight,
@@ -22,77 +17,7 @@ import Voice from '@react-native-voice/voice';
 
 const LoginUser = () => {
   const navigation = useNavigation();
-<<<<<<< HEAD
-
-  // email
-  const [email, setEmail] = useState('');
-  const [badEmail, setBadEmail] = useState('');
-
-  // password
-  const [password, setPassword] = useState('');
-  const [badPassword, setBadPassword] = useState('');
-
-  // loading
-  const [loading, setLoading] = useState(false);
-
-  // validation
-  const validate = () => {
-    // Email validation
-    if (!email.trim()) {
-      setBadEmail('Please enter email');
-      return false;
-    } else {
-      setBadEmail('');
-    }
-
-    // Password validation
-    if (!password.trim()) {
-      setBadPassword('Please enter password');
-      return false;
-    } else {
-      setBadPassword('');
-    }
-
-    return true;
-  };
-
-  // method handle login
-  const handleLogin = () => {
-    if (validate()) {
-      setLoading(true);
-      // Example Firestore query and authentication logic...
-      firestore()
-        .collection('users')
-        .where('email', '==', email)
-        .get()
-        .then((querySnapshot) => {
-          if (querySnapshot.size > 0) {
-            const userData = querySnapshot.docs[0].data();
-            if (userData.password === password) {
-              // Store user data in AsyncStorage
-              AsyncStorage.setItem('userData', JSON.stringify(userData));
-              setLoading(false);
-              // Navigate to appropriate screen based on condition
-              if (userData.type === 'Normal') {
-                navigation.navigate('NormalScreen');
-              } else {
-                navigation.navigate('BlindAmputeeScreen');
-              }
-            } else {
-              setBadPassword('Incorrect password');
-              setLoading(false);
-            }
-          } else {
-            setBadEmail('No user found');
-            setLoading(false);
-          }
-        })
-        .catch((error) => {
-          console.error('Error getting documents: ', error);
-          setLoading(false);
-        });
-    }
-=======
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     Voice.onSpeechStart = onSpeechStart;
     Voice.onSpeechEnd = onSpeechEnd;
@@ -127,7 +52,7 @@ const LoginUser = () => {
   const onSpeechResults = e => {
     setResults(e.value);
     if (e.value.join("").replace(/\s/g, "").toLowerCase() === ("signin")) {
-      navigation.navigate();
+      navigation.navigate('DashboardUser');
     }
     else if (e.value.join("").replace(/\s/g, "").toLowerCase() === ("createaccount")) {
       navigation.navigate();
@@ -186,10 +111,9 @@ const LoginUser = () => {
     if (password == '') {
       validPassword = false;
       setBadPassword('Please Enter the Password');
-    } else if (password != '' && password.length < 6) {
-      validPassword = false;
-      setBadPassword('Please Enter min 6 Character');
-    } else if (password != '' && password.length > 6) {
+    } 
+     
+     else if (password != '' && password.length > 3) {
       validPassword = true;
       setBadPassword('');
     }
@@ -234,7 +158,6 @@ const LoginUser = () => {
     await AsyncStorage.setItem('USER_ID', id);
     await AsyncStorage.setItem('USER_TYPE', 'company');
     navigation.navigate('DashboardUser');
->>>>>>> b441f7a08da2ac2a3ddfeffc429ef7dcfa0c0b27
   };
 
   return (
@@ -261,15 +184,17 @@ const LoginUser = () => {
             color: 'black',
             fontWeight: '500',
           }}>
-          Welcome Back, You've been missed!
+          {"    Welcome Back\nYou've been missed!"}
         </Text>
       </View>
       <View>
         <CustomTextInput
           value={email}
-          onChangeText={(txt) => setEmail(txt)}
+          onChangeText={txt => {
+            setEmail(txt);
+          }}
           title={'Email'}
-          placeholder={'Enter your email'}
+          placeholder={'ashishrahul748@gmail.com'}
         />
         {badEmail != '' && (
           <Text
@@ -283,23 +208,20 @@ const LoginUser = () => {
         )}
         <CustomTextInput
           value={password}
-          onChangeText={(txt) => setPassword(txt)}
+          onChangeText={txt => {
+            setPassword(txt);
+          }}
           title={'Password'}
-          placeholder={'Enter your password'}
-          secureTextEntry={true}
+          placeholder={'Password'}
         />
-<<<<<<< HEAD
-        {badPassword != '' && (
-=======
         {password != '' && (
->>>>>>> b441f7a08da2ac2a3ddfeffc429ef7dcfa0c0b27
           <Text
             style={{
               color: 'red',
               fontSize: responsiveFontSize(1.9),
               marginLeft: responsiveWidth(7),
             }}>
-            {badPassword}
+            {badPaassword}
           </Text>
         )}
         <Text
@@ -309,16 +231,9 @@ const LoginUser = () => {
             alignSelf: 'flex-end',
             marginRight: responsiveWidth(10),
             fontWeight: '500',
-<<<<<<< HEAD
-            marginTop: responsiveHeight(2),
-=======
->>>>>>> b441f7a08da2ac2a3ddfeffc429ef7dcfa0c0b27
           }}>
-          Forgot Password?
+          Forgot Password ?
         </Text>
-<<<<<<< HEAD
-        <SolidBtn onClick={handleLogin} title={'Sign In'} />
-=======
 
         <SolidBtn
           onClick={() => {
@@ -328,38 +243,91 @@ const LoginUser = () => {
           }}
           title={'Sign In'}
         />
->>>>>>> b441f7a08da2ac2a3ddfeffc429ef7dcfa0c0b27
         <BorderBtn
           onClick={() => navigation.navigate('SignUpUser')}
           title={'Create Account'}
         />
       </View>
-<<<<<<< HEAD
-=======
       <TouchableOpacity
         onPress={() => {
           setisRecognising(!isRecognising);
           isRecognising ? stopRecognising() : startRecognising();
         }}>
         {!isRecognising ? (
-          <Image
+
+          <View style={{width:responsiveWidth(15),height:responsiveHeight(15),marginTop:responsiveHeight(8),marginLeft:responsiveWidth(6)}}>
+              <Image
             source={require('../../Image/voice.png')}
             alt="Speech-to-text button"
+            resizeMode='contain'
             style={{
-              width: responsiveWidth(20.3),
-              height: responsiveHeight(10),
+            width:'100%',height:'100%'
             }}></Image>
+
+          </View>
+        
         ) : (
-          <Image
+          <View style={{width:responsiveWidth(15),height:responsiveHeight(15),marginTop:responsiveHeight(8),marginLeft:responsiveWidth(6)}}>
+
+<Image    
             source={require('../../Image/active_voice.png')}
+            resizeMode='contain'
             style={{
-              width: responsiveWidth(20.3),
-              height: responsiveHeight(10),
+
+              width:'100%',
+              height:'100%',
             }}></Image>
+
+          </View>
+         
         )}
       </TouchableOpacity>
->>>>>>> b441f7a08da2ac2a3ddfeffc429ef7dcfa0c0b27
       <Loader visible={loading} />
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showModal}
+        onRequestClose={() => setShowModal(false)}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          }}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              padding: 20,
+              borderRadius: 10,
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                fontSize: responsiveFontSize(2.5),
+                marginBottom: 20,
+                textAlign: 'center',
+                color: 'black',
+              }}>
+              Screens Switch
+            </Text>
+
+            <SolidBtn
+              title={'Other Pwds Screen'}
+              btnstyle={{marginRight: responsiveWidth(5.5)}}
+              txtbtn={{fontSize: responsiveFontSize(3)}}
+              onClick={() => navigation.navigate('DashboardUser')}
+            />
+            <SolidBtn
+              title={'Blind Screen'}
+              btnstyle={{marginRight: responsiveWidth(5.5)}}
+              txtbtn={{fontSize: responsiveFontSize(3)}}
+              onClick={() => navigation.navigate('BlindAmputee')}
+            />
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };

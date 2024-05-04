@@ -11,10 +11,13 @@ import BorderBtn from '../../common/BorderBtn';
 import {useNavigation} from '@react-navigation/native';
 import Loader from '../../common/Loader';
 import firestore from '@react-native-firebase/firestore'
+import CustomUpload from '../../common/CustomUpload';
 
 const SignUpUser = () => {
   const navigation = useNavigation();
 
+
+  const [resume, setResume] = useState('');
   //name
   const [name, setName] = useState('');
   const [badName, setBadName] = useState('');
@@ -27,13 +30,9 @@ const SignUpUser = () => {
   const [contact, setcontact] = useState('');
   const [badContact, setBadContact] = useState('');
 
-  //companyName
-  const [companyName, setCompanyName] = useState('');
-  const [badCompanyName, setBadCompanyName] = useState('');
+ 
 
-  //Address
-  const [Address, setAddress] = useState('');
-  const [badAddress, setBadAddress] = useState('');
+ 
 
   //Paassword
   const [password, setPassword] = useState('');
@@ -108,24 +107,8 @@ const SignUpUser = () => {
     }
 
 
-    //companyname
-    if(companyName==''){
-      validCompanyName=false;
-      setBadCompanyName('Please Enter this Field')
-    }else if(companyName!=''){
-      validCompanyName=true;
-      setBadCompanyName('')
-    }
+   
 
-
-    //address
-    if(Address==''){
-      validAddress=false;
-      setBadCompanyName('Please Enter this Field')
-    }else if(Address!=''){
-      validAddress=true;
-      setBadAddress('')
-    }
 
 
     //password
@@ -145,23 +128,30 @@ const SignUpUser = () => {
   };
 
 
-  //register user method
+  
+
+  const handleFileSelect = (fileName) => {
+    setResume(fileName);
+  };
 
   const registerUser =()=>{
+
+
+    
     setLoading(true)
     firestore().collection('GetJobs').add({
       name,
       email,
       contact,
-      companyName,
-      Address,
+   
+      
       password
     }).then(()=>{
       setName('');
       setEmail('');
       setcontact('');
-      setCompanyName('');
-      setAddress('');
+     
+      
       setPassword('');
       setAccountCreate(true)
       setLoading(false)
@@ -253,42 +243,9 @@ const SignUpUser = () => {
          </Text>
        )}
 
-       <CustomTextInput
-         value={companyName}
-         onChangeText={txt => {
-           setCompanyName(txt);
-         }}
-         title={'Company Name'}
-         placeholder={'Ex-microsoft'}
-       />
-        {companyName != '' && (
-         <Text
-           style={{
-             color: 'red',
-             fontSize: responsiveFontSize(1.9),
-             marginLeft: responsiveWidth(7),
-           }}>
-           {badCompanyName}
-         </Text>
-       )}
-       <CustomTextInput
-         value={Address}
-         onChangeText={txt => {
-           setAddress(txt);
-         }}
-         title={'Address'}
-         placeholder={'Company Address'}
-       />
-        {Address != '' && (
-         <Text
-           style={{
-             color: 'red',
-             fontSize: responsiveFontSize(1.9),
-             marginLeft: responsiveWidth(7),
-           }}>
-           {badAddress}
-         </Text>
-       )}
+{/* resume  upload*/}
+<CustomUpload onFileSelect={handleFileSelect}/>
+      
        <CustomTextInput
          value={password}
          onChangeText={txt => {

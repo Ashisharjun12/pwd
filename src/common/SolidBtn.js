@@ -2,9 +2,9 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { responsiveHeight, responsiveWidth ,responsiveFontSize} from 'react-native-responsive-dimensions'
 
-const SolidBtn = ({title ,onClick}) => {
+const SolidBtn = ({title ,onClick,btnstyle,txtbtn}) => {
   return (
-   <TouchableOpacity onPress={()=>onClick()} style={{
+   <TouchableOpacity onPress={()=>onClick()} style={[{
     width: responsiveWidth(90),
     backgroundColor:'#5169F6',
     height: responsiveHeight(7),
@@ -13,8 +13,8 @@ const SolidBtn = ({title ,onClick}) => {
     justifyContent:'center',
     alignItems:'center',
     marginLeft:responsiveWidth(5)
-   }}>
-    <Text style={{color:'white',fontSize:responsiveFontSize(2.6)}}>{title}</Text>
+   },btnstyle]}>
+    <Text style={[{color:'white',fontSize:responsiveFontSize(2.6)},txtbtn]}>{title}</Text>
 
    </TouchableOpacity>
   )

@@ -187,6 +187,7 @@ const Job = () => {
           );
         }}
         keyExtractor={(item, index) => index.toString()}
+        
       />
     </View>
   );

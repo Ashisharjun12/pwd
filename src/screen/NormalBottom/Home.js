@@ -50,7 +50,7 @@ const Home = () => {
           style={{
             flex: 1,
             marginLeft: responsiveWidth(4),
-            fontSize: responsiveFontSize(1.7) * fontSizeMultiplier,
+            fontSize: responsiveFontSize(2.3) * fontSizeMultiplier,
             color: 'black',
           }}
           placeholderTextColor={'black'}
@@ -64,48 +64,47 @@ const Home = () => {
 
       {/* Adding Cards */}
       <View
-        style={{flexDirection: 'row', marginTop: responsiveHeight(6), gap: 20}}>
+        style={{flexDirection: 'row', marginTop: responsiveHeight(3), gap: 14}}>
         <Card
-          onClick={() => {}}
-          title={'Exams'}
-          imgsrc={require('../../Image/exam.png')}
-          style={{marginLeft: responsiveWidth(4)}}
+          onClick={() => {navigation.navigate('Vocational')}}
+          title={'Vocational\nTraning'}
+          imgsrc={require('../../Image/vocal.png')}
+          style={{width:responsiveWidth(43), backgroundColor: '#F3CA52'}}
+          styleCard={{marginLeft: responsiveWidth(3.4),height:responsiveHeight(30)}}
         
-          textstyle={{fontSize:responsiveFontSize(2.7)*fontSizeMultiplier}}
+          textstyle={{fontSize:responsiveFontSize(2.5)*fontSizeMultiplier}}
         />
         <Card
-          onClick={() => {}}
+          onClick={() => {navigation.navigate('Workshop')}}
           title={'Workshop'}
           imgsrc={require('../../Image/web.png')}
-          style={{
-            marginLeft: responsiveWidth(4),
-            backgroundColor: '#43C5AE',
-          }}
+          style={{width:responsiveWidth(43), backgroundColor: '#43C5AE'}}
+          styleCard={{marginLeft: responsiveWidth(2),height:responsiveHeight(30)}}
+          
           textstyle={{fontSize:responsiveFontSize(2.7)*fontSizeMultiplier}}
         />
       </View>
       <View
-        style={{flexDirection: 'row', marginTop: responsiveHeight(6), gap: 20}}>
+        style={{flexDirection: 'row', marginTop: responsiveHeight(3), gap: 6}}>
         <Card
           onClick={() => {
             navigation.navigate('Job');
           }}
           title={'Jobs'}
           imgsrc={require('../../Image/jobs.png')}
-          style={{
-            marginLeft: responsiveWidth(4),
-            backgroundColor: '#F45E5E',
-          }}
+          style={{width:responsiveWidth(43), backgroundColor: '#F45E5E'}}
+          styleCard={{marginLeft: responsiveWidth(4),height:responsiveHeight(30)}}
+          
+          
           textstyle={{fontSize:responsiveFontSize(2.7)*fontSizeMultiplier}}
         />
         <Card
           onClick={() => {}}
           title={'News'}
           imgsrc={require('../../Image/news.png')}
-          style={{
-            marginLeft: responsiveWidth(4),
-            backgroundColor: '#60D68E',
-          }}
+          style={{width:responsiveWidth(43), backgroundColor: '#60D68E'}}
+          styleCard={{marginLeft: responsiveWidth(4),height:responsiveHeight(30)}}
+         
           textstyle={{fontSize:responsiveFontSize(2.7)*fontSizeMultiplier}}
         />
       </View>
@@ -117,8 +116,8 @@ const Home = () => {
         }}>
         <Image
           style={{
-            marginLeft: responsiveWidth(5),
-            marginTop: responsiveHeight(5),
+            marginLeft: responsiveWidth(41),
+            marginTop: responsiveHeight(4),
           }}
           source={require('../../Image/access.png')}
         />

@@ -1,4 +1,4 @@
-import {View, Text, Modal} from 'react-native';
+import { View, Text, TouchableOpacity, Modal } from 'react-native';
 import React, { useState } from 'react';
 import {
   responsiveFontSize,
@@ -9,110 +9,82 @@ import CustomTextInput from '../../common/CustomTextInput';
 import SolidBtn from '../../common/SolidBtn';
 import BorderBtn from '../../common/BorderBtn';
 import { useNavigation } from '@react-navigation/native';
-import firestore from '@react-native-firebase/firestore'
+import firestore from '@react-native-firebase/firestore';
 import Loader from '../../common/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginUser = () => {
-    const  navigation = useNavigation()
-    
- 
-    
-//email
-    const [email, setEmail] = useState('');
-    const [badEmail, setBadEmail] = useState('');
+  const navigation = useNavigation();
 
-    //password
-    const [password, setPassword] = useState('');
-    const [badPaassword, setBadPassword] = useState('');
+  // email
+  const [email, setEmail] = useState('');
+  const [badEmail, setBadEmail] = useState('');
 
-    //loading
-    const [loading ,setLoading] =useState(false)
+  // password
+  const [password, setPassword] = useState('');
+  const [badPassword, setBadPassword] = useState('');
 
+  // loading
+  const [loading, setLoading] = useState(false);
 
-
-      //validation
+  // validation
   const validate = () => {
-  
-    let emailRegex = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/;
-
-
-    let validEmail = true;
-    let validPassword = true;
-
-   
-
-
-    //email validate
-
-    if (email == '') {
-      validEmail = false;
-      setBadEmail('Please Enter Email');
-    } else if (email != '' && !email.toString().match(emailRegex)) {
-      validEmail = false;
-      setBadEmail('Please Enter Valid Email');
-    } else if (email != '' && email.toString().match(emailRegex)) {
-      validEmail = true;
+    // Email validation
+    if (!email.trim()) {
+      setBadEmail('Please enter email');
+      return false;
+    } else {
       setBadEmail('');
     }
 
-
-
-
-    //password
-
-    if(password==''){
-      validPassword=false;
-      setBadPassword("Please Enter the Password")
-    }else if(password!='' && password.length<6){
-      validPassword=false;
-      setBadPassword('Please Enter min 6 Character')
-    }else if(password!='' && password.length>6){
-      validPassword=true;
-      setBadPassword('')
+    // Password validation
+    if (!password.trim()) {
+      setBadPassword('Please enter password');
+      return false;
+    } else {
+      setBadPassword('');
     }
 
-    return validEmail  && validPassword
+    return true;
   };
 
-
-  //method handel login
+  // method handle login
   const handleLogin = () => {
-    setLoading(true)
-    firestore().collection('GetJobs').where('email','==',email).get().then(data=>{
-        setLoading(false)
-        console.log(data.docs)
-        if(data.docs.length>0){
-            data.docs.forEach(item=>{
-                if(item.data().password==password){
-                    setBadEmail("")
-                    setBadPassword("")
-                    goToNextScreen(item.id,item.data().name,item.data().email)
-    
-                }else{
-                    setBadPassword('Wrong Password')
-                }
-            })
-        }else{
-            setBadEmail('No User Exist')
-        }
-    }).catch(error=>{
-        setLoading(false)
-        console.log(error +'getting login error')
-    })
-  }
-
-
-  //nest screen data
-  const goToNextScreen = async(id,email,name)=>{
-    await AsyncStorage.setItem('NAME',name)
-    await AsyncStorage.setItem('EMAIL',email)
-    await AsyncStorage.setItem('USER_ID',id)
-    await AsyncStorage.setItem('USER_TYPE','company')
-    navigation.navigate('DashboardUser')
-
-
-  }
+    if (validate()) {
+      setLoading(true);
+      // Example Firestore query and authentication logic...
+      firestore()
+        .collection('users')
+        .where('email', '==', email)
+        .get()
+        .then((querySnapshot) => {
+          if (querySnapshot.size > 0) {
+            const userData = querySnapshot.docs[0].data();
+            if (userData.password === password) {
+              // Store user data in AsyncStorage
+              AsyncStorage.setItem('userData', JSON.stringify(userData));
+              setLoading(false);
+              // Navigate to appropriate screen based on condition
+              if (userData.type === 'Normal') {
+                navigation.navigate('NormalScreen');
+              } else {
+                navigation.navigate('BlindAmputeeScreen');
+              }
+            } else {
+              setBadPassword('Incorrect password');
+              setLoading(false);
+            }
+          } else {
+            setBadEmail('No user found');
+            setLoading(false);
+          }
+        })
+        .catch((error) => {
+          console.error('Error getting documents: ', error);
+          setLoading(false);
+        });
+    }
+  };
 
   return (
     <View>
@@ -138,17 +110,15 @@ const LoginUser = () => {
             color: 'black',
             fontWeight: '500',
           }}>
-          {"    Welcome Back\nYou've been missed!"}
+          Welcome Back, You've been missed!
         </Text>
       </View>
       <View>
-      <CustomTextInput
+        <CustomTextInput
           value={email}
-          onChangeText={txt => {
-            setEmail(txt);
-          }}
+          onChangeText={(txt) => setEmail(txt)}
           title={'Email'}
-          placeholder={'ashishrahul748@gmail.com'}
+          placeholder={'Enter your email'}
         />
         {badEmail != '' && (
           <Text
@@ -162,20 +132,19 @@ const LoginUser = () => {
         )}
         <CustomTextInput
           value={password}
-          onChangeText={txt => {
-            setPassword(txt);
-          }}
+          onChangeText={(txt) => setPassword(txt)}
           title={'Password'}
-          placeholder={'Password'}
+          placeholder={'Enter your password'}
+          secureTextEntry={true}
         />
-         {password != '' && (
+        {badPassword != '' && (
           <Text
             style={{
               color: 'red',
               fontSize: responsiveFontSize(1.9),
               marginLeft: responsiveWidth(7),
             }}>
-            {badPaassword}
+            {badPassword}
           </Text>
         )}
         <Text
@@ -184,23 +153,19 @@ const LoginUser = () => {
             fontSize: responsiveFontSize(2),
             alignSelf: 'flex-end',
             marginRight: responsiveWidth(10),
-            fontWeight:'500'
+            fontWeight: '500',
+            marginTop: responsiveHeight(2),
           }}>
-          Forgot Password ?
+          Forgot Password?
         </Text>
-
-        <SolidBtn onClick={()=>{
-            if(validate()){
-                handleLogin()
-
-            }
-        }} title={'Sign In'}/>
-        <BorderBtn onClick={()=>navigation.navigate('SignUpUser')} title={'Create Account'}/>
+        <SolidBtn onClick={handleLogin} title={'Sign In'} />
+        <BorderBtn
+          onClick={() => navigation.navigate('SignUpUser')}
+          title={'Create Account'}
+        />
       </View>
-      <Loader visible={loading}/>
-
+      <Loader visible={loading} />
     </View>
-    
   );
 };
 

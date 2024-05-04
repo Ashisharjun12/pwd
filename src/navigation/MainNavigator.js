@@ -20,6 +20,7 @@ import Technical from '../Pwd/Technical';
 import NonTech from '../Pwd/NonTech';
 import Story from '../Pwd/Story';
 import Linklist from '../Pwd/Topic/Linklist';
+import Workshop from '../Pwd/Workshop';
 
 const Stack = createNativeStackNavigator();
 const MainNavigator = () => {
@@ -109,6 +110,11 @@ const MainNavigator = () => {
       <Stack.Screen
         name="JobDetails"
         component={JobDetails}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Workshop"
+        component={Workshop}
         options={{headerShown: false}}
       />
 

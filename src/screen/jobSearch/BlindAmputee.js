@@ -24,6 +24,16 @@ const BlindAmputee = () => {
   const navigation = useNavigation();
 
   const [isVisible, setIsVisible] = useState(false);
+  const [fontSizeMultiplier, setFontSizeMultiplier] = useState(1);
+
+
+  const increaseFontSize = () => {
+    setFontSizeMultiplier(prevMultiplier => prevMultiplier + 0.3);
+  };
+
+  const decreaseFontSize = () => {
+    setFontSizeMultiplier(prevMultiplier => prevMultiplier - 0.3);
+  };
 
   return (
     <ScrollView style={{marginBottom: responsiveHeight(1)}}>
@@ -34,16 +44,19 @@ const BlindAmputee = () => {
       <View
         style={{flexDirection: 'row', marginTop: responsiveHeight(6), gap: 8,marginLeft:responsiveWidth(3)}}>
         <Card 
-        style={{width:responsiveWidth(42)}}
+        style={{width:responsiveWidth(42),
+       
+        }}
           onClick={() => {navigation.navigate('Vocational')}}
           title={'Vocational\n Traning'}
-          
+          textstyle={{   fontSize:responsiveFontSize(2.3)*fontSizeMultiplier}}
           imgsrc={require('../../Image/vocal.png')}
           styleCard={{marginLeft: responsiveWidth(2),height:responsiveHeight(40)}}
         />
         <Card
-          onClick={() => {}}
+          onClick={() => {navigation.navigate('Workshop')}}
           title={'Workshop'}
+          textstyle={{   fontSize:responsiveFontSize(2.3)*fontSizeMultiplier}}
           imgsrc={require('../../Image/web.png')}
           style={{width:responsiveWidth(43), backgroundColor: '#43C5AE'}}
           styleCard={{marginLeft: responsiveWidth(2),height:responsiveHeight(40)}}
@@ -56,6 +69,7 @@ const BlindAmputee = () => {
             navigation.navigate('Job');
           }}
           title={'Jobs'}
+          textstyle={{   fontSize:responsiveFontSize(2.3)*fontSizeMultiplier}}
           imgsrc={require('../../Image/jobs.png')}
           style={{width: responsiveWidth(43), backgroundColor: '#F45E5E'}}
           styleCard={{marginLeft: responsiveWidth(2),height:responsiveHeight(40)}}
@@ -63,6 +77,7 @@ const BlindAmputee = () => {
         <Card
           onClick={() => {}}
           title={'News'}
+          textstyle={{   fontSize:responsiveFontSize(2.3)*fontSizeMultiplier}}
           imgsrc={require('../../Image/news.png')}
           style={{width: responsiveWidth(43), backgroundColor: '#60D68E'}}
           styleCard={{marginLeft: responsiveWidth(2),height:responsiveHeight(40)}}
@@ -76,7 +91,7 @@ const BlindAmputee = () => {
         <Image
           style={{
             marginLeft: responsiveWidth(5),
-            marginTop: responsiveHeight(3),
+            marginTop: responsiveHeight(2),
           }} 
           source={require('../../Image/access.png')}
         />
@@ -109,7 +124,7 @@ const BlindAmputee = () => {
           </Text>
 
           <View>
-            <TouchableOpacity onPress={()=>{}}
+            <TouchableOpacity onPress={increaseFontSize}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -134,10 +149,10 @@ const BlindAmputee = () => {
                   fontSize: responsiveFontSize(2.4),
                   fontWeight: '500',
                 }}>
-                Increse FontSize
+                Increase FontSize
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>{}}
+            <TouchableOpacity onPress={decreaseFontSize}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -191,9 +206,9 @@ const BlindAmputee = () => {
                   fontWeight: '500',
                 }}>
                 Color Contrast
-              </Text>j fdioyzdg[9rg7-8z0t]
+              </Text>
             </TouchableOpacity>
-          </View> let a
+          </View>
         </View>
       </Modal>
     </ScrollView>

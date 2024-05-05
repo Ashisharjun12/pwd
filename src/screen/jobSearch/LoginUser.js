@@ -111,9 +111,9 @@ const LoginUser = () => {
     if (password == '') {
       validPassword = false;
       setBadPassword('Please Enter the Password');
-    } 
-     
-     else if (password != '' && password.length > 3) {
+    }
+
+    else if (password != '' && password.length > 2) {
       validPassword = true;
       setBadPassword('');
     }
@@ -157,17 +157,17 @@ const LoginUser = () => {
     await AsyncStorage.setItem('EMAIL', email);
     await AsyncStorage.setItem('USER_ID', id);
     await AsyncStorage.setItem('USER_TYPE', 'company');
-   
+
   };
 
 
   //handle switch method
 
-  const handelSwitch = ()=>{
+  const handelSwitch = () => {
     setShowModal(true)
 
 
-    
+
   }
 
   return (
@@ -266,31 +266,31 @@ const LoginUser = () => {
         }}>
         {!isRecognising ? (
 
-          <View style={{width:responsiveWidth(15),height:responsiveHeight(15),marginTop:responsiveHeight(8),marginLeft:responsiveWidth(6)}}>
-              <Image
-            source={require('../../Image/voice.png')}
-            alt="Speech-to-text button"
-            resizeMode='contain'
-            style={{
-            width:'100%',height:'100%'
-            }}></Image>
+          <View style={{ width: responsiveWidth(15), height: responsiveHeight(15), marginTop: responsiveHeight(8), marginLeft: responsiveWidth(6) }}>
+            <Image
+              source={require('../../Image/voice.png')}
+              alt="Speech-to-text button"
+              resizeMode='contain'
+              style={{
+                width: '100%', height: '100%'
+              }}></Image>
 
           </View>
-        
+
         ) : (
-          <View style={{width:responsiveWidth(15),height:responsiveHeight(15),marginTop:responsiveHeight(8),marginLeft:responsiveWidth(6)}}>
+          <View style={{ width: responsiveWidth(15), height: responsiveHeight(15), marginTop: responsiveHeight(8), marginLeft: responsiveWidth(6) }}>
 
-<Image    
-            source={require('../../Image/active_voice.png')}
-            resizeMode='contain'
-            style={{
+            <Image
+              source={require('../../Image/active_voice.png')}
+              resizeMode='contain'
+              style={{
 
-              width:'100%',
-              height:'100%',
-            }}></Image>
+                width: '100%',
+                height: '100%',
+              }}></Image>
 
           </View>
-         
+
         )}
       </TouchableOpacity>
       <Loader visible={loading} />
@@ -326,14 +326,14 @@ const LoginUser = () => {
 
             <SolidBtn
               title={'Other Pwds Screen'}
-              btnstyle={{marginRight: responsiveWidth(5.5)}}
-              txtbtn={{fontSize: responsiveFontSize(3)}}
+              btnstyle={{ marginRight: responsiveWidth(5.5) }}
+              txtbtn={{ fontSize: responsiveFontSize(3) }}
               onClick={() => navigation.navigate('DashboardUser')}
             />
             <SolidBtn
               title={'Blind Screen'}
-              btnstyle={{marginRight: responsiveWidth(5.5)}}
-              txtbtn={{fontSize: responsiveFontSize(3)}}
+              btnstyle={{ marginRight: responsiveWidth(5.5) }}
+              txtbtn={{ fontSize: responsiveFontSize(3) }}
               onClick={() => navigation.navigate('BlindAmputee')}
             />
           </View>

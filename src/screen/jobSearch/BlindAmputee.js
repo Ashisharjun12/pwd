@@ -43,6 +43,11 @@ const BlindAmputee = () => {
 
       <View
         style={{flexDirection: 'row', marginTop: responsiveHeight(6), gap: 8,marginLeft:responsiveWidth(3)}}>
+<TouchableOpacity onPress={()=>{navigation.navigate('SelectUser')}} style={{position:'absolute',top:'-11%',left:'74%'}}>
+<Text style={{color:'#5169F6',fontWeight:'bold',fontSize:responsiveFontSize(2.2)}}>LogOut</Text>
+</TouchableOpacity>
+
+
         <Card 
         style={{width:responsiveWidth(42),
        

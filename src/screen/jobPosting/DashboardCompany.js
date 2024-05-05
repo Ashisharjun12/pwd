@@ -15,7 +15,7 @@ const DashboardCompany = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        // tabBarShowLabel: false,
+        // tabBarShowLabel: false, true false 
         tabBarActiveTintColor: '#5169F6',
         tabBarInactiveTintColor: 'grey',
       }}>
